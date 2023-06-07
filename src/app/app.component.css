@@ -1,0 +1,12 @@
+p{
+    color: white;
+}
+.btn{
+    margin-right: 15px;
+}
+.actived{
+    background-color: rgb(33, 94, 223);
+    -webkit-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+    -moz-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+    box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+}
