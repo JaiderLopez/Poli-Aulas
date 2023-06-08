@@ -26,13 +26,18 @@
     margin-right: auto;
     display: block;
 }
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
 
-th{
-    border-left: 1px solid;
+hr{
+    width: 100%;
 }
-td{
-    border-left: 1px solid;
-}
+
 
 .tr-up{
     border-top: 1px solid;
