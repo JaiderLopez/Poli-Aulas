@@ -1,6 +1,6 @@
 <div class="container">
     <div class="caja">
-        <p class="text-poli">EditarPersona</p>
+        <p class="text-poli">Editar Persona</p>
         <button class="button-x" (click)="atHome()"> <strong>X</strong> </button>
         <img src="../../../assets/img/people.avif" alt="logo" class="center" id="logo">
 
@@ -14,7 +14,7 @@
                     <!-- <p [hidden]="gEmail?.untouched || !gEmail?.errors?.['required']">Debe ingresar un email</p> -->
                     <!-- <p *ngIf="gEmail?.errors?.['email']">El email no es valido</p> -->
 
-                    <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="password" required>
+                    <input type="text" class="form-control" id="password" name="password" formControlName="password" placeholder="password" required>
                     <!-- <p [hidden]="statusForm.get('password')?.valid || gPassword?.untouched">Debe ingresar una Contraseña</p> -->
 
                     <select name="type_user" id="type_user" formControlName="type" class="form-control" required>
@@ -29,7 +29,7 @@
                       </select>
                 </div>
                 <!-- <button class="button" routerLink="register"> <strong>Cancel</strong> </button> -->
-                <button class="button" [disabled]="!editPerForm.valid" type="submit"><strong>Registre</strong> </button>
+                <button class="button" [disabled]="!editPerForm.valid" type="submit"><strong>Actualizar</strong> </button>
             </form>
         </div>
     </div>

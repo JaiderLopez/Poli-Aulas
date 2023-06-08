@@ -15,6 +15,7 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { RegisterComponent } from './Componentes/register/register.component';
 import { ViewPersonasComponent } from './Componentes/views/view-personas/view-personas.component';
 import { EditPersonaComponent } from './Componentes/views/edit-persona/edit-persona.component';
+import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EditPersonaComponent } from './Componentes/views/edit-persona/edit-pers
     RegisterComponent,
     ViewPersonasComponent,
     EditPersonaComponent,
+    ViewAulaComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,7 @@ export class ViewPersonasComponent {
   }
 
   updatePersona(id){
-    // this.router.navigate(['editper/:{{id}}'])
+    this.router.navigate(['editper']);
   }
 
   atRegister(){

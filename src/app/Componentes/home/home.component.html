@@ -1,1 +1,50 @@
-<p>home works!</p>
+<div>
+<!-- <div class="container">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-3">
+            <label class="form-label" style="color: red;">Type</label>
+            <input class="form-control" name="title" formControlName="type" required placeholder="...">
+        </div>
+    
+        <div class="mb-3">
+            <label class="form-label" style="color: red;">square</label>
+            <input class="form-control" name="square" formControlName="square" required placeholder="...">
+        </div>
+    
+        <div class="mb-3">
+            <label class="form-label" style="color: red;">number</label>
+            <input class="form-control" name="number" formControlName="number" required placeholder="...">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="color: red;">state</label>
+            <input class="form-control" name="state" formControlName="state" required placeholder="...">
+        </div>
+        <button class="btn btn-primary" [disabled]="!postForm.valid" type="submit">Add</button>
+    </form>
+</div> -->
+</div>
+
+<div class="container">
+    <div class="caja">
+        <p class="text-poli">Politectnico Colombiano</p>
+        <div class="justify-content-center" >
+            <table>
+                 <thead>
+                    <tr>
+                        <th>--Aulas--</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <tr class="tr-up" *ngFor="let aula of aulas">
+                        <td>
+                            <button class="btn btn-success" routerLink="viewau/{{ aula.id }}">B: {{aula.square}}, A: {{aula.number}}</button>
+                            <!-- <button class="btn btn-outline-danger" (click)="deleteAula(aula.id)"><i class="fa-solid fa-trash"></i></button> -->
+                        </td>
+                    </tr>
+                 </tbody>
+            </table>
+        </div>
+    </div>
+</div>
