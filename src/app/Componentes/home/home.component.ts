@@ -14,31 +14,35 @@ export class HomeComponent {
   // public postForm: FormGroup;
   // private formBuilder: FormBuilder
   constructor(private aulaService: AulasService, private router: Router,) {
-  //   this.postForm = this.formBuilder.group({
-  //     type: [''],
-  //     square: [''],
-  //     number: [''],
-  //     state: [''],
-  //     date: [''],
-  //     hInicio: [''],
-  //     hFin: [''],
-  // })
-}
+    //   this.postForm = this.formBuilder.group({
+    //     type: [''],
+    //     square: [''],
+    //     number: [''],
+    //     state: [''],
+    //     date: [''],
+    //     hInicio: [''],
+    //     hFin: [''],
+    // })
+  }
 
   aulas: Aulas[];
+  bloque: string[];
 
-  ngOnInit(): void{
-    this.aulaService.getAulas().subscribe( (res)=>{
-      this.aulas = res.map( (e)=>{
+  ngOnInit(): void {
+    this.aulaService.getAulas().subscribe((res) => {
+      this.aulas = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Aulas)
         }
       })
+      this.aulas= this.sortCards(this.aulas)
+      this.bloque= this.getSquare(this.aulas)
     })
+    
   }
 
-  deleteAula(aula){
+  deleteAula(aula) {
     this.aulaService.deleteAula(aula);
   }
 
@@ -46,7 +50,23 @@ export class HomeComponent {
   //   this.aulaService.addAulas(this.postForm.value);
   //   alert("aggre");
   // }
-  toViewAula(id){
-    this.router.navigate(['viewau/{{id}}']);
+  toViewAula(id) {
+    this.router.navigate(['viewau/' + id]);
   }
+
+  sortCards(cards: Aulas[]): Aulas[] {
+    return cards.sort((a, b) => {
+      if (a.square === b.square) {
+        return a.number.localeCompare(b.number);
+      }
+      return a.square.localeCompare(b.square);
+    });
+  }
+
+  getSquare(cards: Aulas[]): string[] {
+    // return cards.map(card => card.square);
+    const squares = cards.map(card => card.square);
+    return squares.filter((square, index) => squares.indexOf(square) === index);
+  }
+
 }

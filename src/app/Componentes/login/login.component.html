@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="container">
+    <div class="caja">
+        <img src="../../../assets/img/Politecnico.png" alt="logo" class="center" id="logo">
+        <p class="text-poli">Politectnico Colombiano</p>
+        <p class="text-poli">Jaime Isaza Cadavid</p>
+        <div class="justify-content-center" >
+            <form class="form" [formGroup]="formulario" (ngSubmit)="login()">
+                <div class="mb-4">
+                    <input type="email" class="form-control" id="user" name="usuario" formControlName="email" placeholder="name_user">
+                    <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="password">
+
+                </div>
+                <button class="button" routerLink="register" type="submit"> <strong>Log In</strong> </button>
+            </form>
+        </div>
+    </div>
+</div>

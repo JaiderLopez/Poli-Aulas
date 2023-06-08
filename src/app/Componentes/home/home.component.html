@@ -30,7 +30,7 @@
     <div class="caja">
         <p class="text-poli">Politectnico Colombiano</p>
         <div class="justify-content-center" >
-            <table>
+            <!-- <table>
                  <thead>
                     <tr>
                         <th>--Aulas--</th>
@@ -40,11 +40,16 @@
                     <tr class="tr-up" *ngFor="let aula of aulas">
                         <td>
                             <button class="btn btn-success" routerLink="viewau/{{ aula.id }}">B: {{aula.square}}, A: {{aula.number}}</button>
-                            <!-- <button class="btn btn-outline-danger" (click)="deleteAula(aula.id)"><i class="fa-solid fa-trash"></i></button> -->
+                            <button class="btn btn-outline-danger" (click)="deleteAula(aula.id)"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                  </tbody>
-            </table>
+            </table> -->
+            <div class="row" *ngFor="let bloque of bloque">
+                <div class="col-3" *ngFor="let aula of aulas">
+                    <button *ngIf="aula.square===bloque" [class]="'btn btn-success '+aula.state" (click)="toViewAula(aula.id)">B: {{aula.square}}, A: {{aula.number}}</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

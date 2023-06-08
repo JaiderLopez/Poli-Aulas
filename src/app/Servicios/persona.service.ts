@@ -50,5 +50,8 @@ export class PersonaService {
     return this.angularFireStore.collection("persona").doc(id).delete();
   }
 
+  getLogin(email){
+    return this.angularFireStore.collection("persona", ref=>ref.where('email', '==', email)).valueChanges();
+  }
 
 }

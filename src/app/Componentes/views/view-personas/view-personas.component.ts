@@ -27,11 +27,15 @@ export class ViewPersonasComponent {
   }
 
   deletePersona(persona){
-    this.personaService.deletePersona(persona);
+    if(confirm("Are you sure to delete")) {
+      console.log("Implement delete functionality here");
+      this.personaService.deletePersona(persona);
+    }
+    
   }
 
   updatePersona(id){
-    this.router.navigate(['editper']);
+    this.router.navigate(['editper/'+id]);
   }
 
   atRegister(){

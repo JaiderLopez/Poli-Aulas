@@ -48,3 +48,11 @@ td{
 .btn-danger{
     margin-left: 10px;
 }
+
+.libre{
+    background-color: rgb(50, 142, 111) !important;
+}
+
+.ocupado{
+    background-color: rgb(178, 20, 20) !important;
+}
