@@ -3,16 +3,16 @@
         <button class="button-x" (click)="atHome()"> <strong>X</strong> </button>
         <p class="text-poli">AULA</p>
         <hr>
-        <!-- <img src="../../../assets/img/people.avif" alt="logo" class="center" id="logo"> -->
-
-        <div class="justify-content-center" >
+        <div class="justify-content-center">
             <form class="form" [formGroup]="aulaForm" (ngSubmit)="onSubmit()">
                 <div class="mb-4">
                     <label class="">square</label>
-                    <input type="text" class="form-control" id="square" name="square" formControlName="square" placeholder="------">
-                    
+                    <input type="text" class="form-control" id="square" name="square" formControlName="square"
+                        placeholder="------">
+
                     <label class="">Numero Aula</label>
-                    <input type="text" class="form-control" id="number" name="number" formControlName="number" placeholder="------">
+                    <input type="text" class="form-control" id="number" name="number" formControlName="number"
+                        placeholder="------">
 
                     <label class="">Tipo Aula</label>
                     <select name="type_user" id="type_user" formControlName="type" class="form-control">
@@ -20,19 +20,23 @@
                         <option value="sala">Sala</option>
                         <option value="aula-Taller">Aula-Taller</option>
                         <option value="laboratorio">Laboratorio</option>
-                      </select>
+                    </select>
 
-                      <label class="">Fecha</label>
-                      <input type="text" class="form-control" id="date" name="date" formControlName="date" placeholder="------">
-                      
-                      <label class="">Estado</label>
-                      <input type="text" class="form-control" id="state" name="state" formControlName="state" placeholder="------">
+                    <label class="">Fecha</label>
+                    <input type="text" class="form-control" id="date" name="date" formControlName="date"
+                        placeholder="------">
 
-                      <label class="">Hora Inicio</label>
-                      <input type="text" class="form-control" id="hInicio" name="hInicio" formControlName="hInicio" placeholder="------">
-                      
-                      <label class="">Hora Fin</label>
-                      <input type="text" class="form-control" id="hFin" name="hFin" formControlName="hFin" placeholder="------">
+                    <label class="">Estado</label>
+                    <input type="text" class="form-control" id="state" name="state" formControlName="state"
+                        placeholder="------">
+
+                    <label class="">Hora Inicio</label>
+                    <input type="text" class="form-control" id="hInicio" name="hInicio" formControlName="hInicio"
+                        placeholder="------">
+
+                    <label class="">Hora Fin</label>
+                    <input type="text" class="form-control" id="hFin" name="hFin" formControlName="hFin"
+                        placeholder="------">
 
                 </div>
                 <button class="button" routerLink="register"> <strong>Solicitar</strong> </button>

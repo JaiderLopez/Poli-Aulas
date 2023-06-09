@@ -25,6 +25,8 @@ constructor(
     password: [''],
     type: [''],
     state: [''],
+    subject: [''],
+    group: [''],
   })
 }
 

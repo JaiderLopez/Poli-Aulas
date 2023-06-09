@@ -42,7 +42,9 @@ export class PersonaService {
            gmail: persona.email,
            password: persona.password,
            type: persona.type,
-           state: persona.state
+           state: persona.state,
+           subject: persona.subject,
+           group: persona.group,
     })
   }
   //eliminar persona
