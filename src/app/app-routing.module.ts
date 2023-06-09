@@ -8,6 +8,7 @@ import { EditPersonaComponent } from './Componentes/views/edit-persona/edit-pers
 import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'register', component: RegisterComponent},

@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
 //Formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//Security local storage encripted npm install angular-web-storage
+import { AngularWebStorageModule } from 'angular-web-storage';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Componentes/home/home.component';
@@ -37,6 +40,8 @@ import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.compo
     //Formularios
     FormsModule,
     ReactiveFormsModule,
+    //Security local storage encripted
+    AngularWebStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

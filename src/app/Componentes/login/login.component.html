@@ -4,7 +4,7 @@
         <p class="text-poli">Politectnico Colombiano</p>
         <p class="text-poli">Jaime Isaza Cadavid</p>
         <div class="justify-content-center" >
-            <form class="form" [formGroup]="formulario" (ngSubmit)="login()">
+            <form class="form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
                 <div class="mb-4">
                     <input type="email" class="form-control" id="user" name="usuario" formControlName="email" placeholder="name_user">
                     <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="password">
