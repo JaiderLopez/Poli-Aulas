@@ -29,12 +29,14 @@ export class HomeComponent {
   aulas: Aulas[];
   bloque: string[];
   name: string;
+  type: string= 'administrador';
 
   ngOnInit(): void {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login']);
     } else {
       this.name = this.authService.getName();
+      // this.type = this.authService.getType();
     }
     this.aulaService.getAulas().subscribe((res) => {
       this.aulas = res.map((e) => {
@@ -79,6 +81,15 @@ export class HomeComponent {
     // return cards.map(card => card.square);
     const squares = cards.map(card => card.square);
     return squares.filter((square, index) => squares.indexOf(square) === index);
+  }
+
+  getType(){
+    if(this.type=='administrador'){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
 }

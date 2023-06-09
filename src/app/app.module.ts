@@ -41,7 +41,7 @@ import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.compo
     FormsModule,
     ReactiveFormsModule,
     //Security local storage encripted
-    AngularWebStorageModule
+    // AngularWebStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

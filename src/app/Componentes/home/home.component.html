@@ -26,46 +26,66 @@
 </div> -->
 </div>
 
-<div class="container">
+<!-- nav -->
+<nav class="navbar navbar-dark bg-dark">
+    <div> <!-- logo -->
+        <p class="text-poli">Politectnico Colombiano - J I C</p>
+    </div>
+    <div><!-- opciones para administrador -->
+        <span *ngIf="getType(); else doc_est">
+            Menu para Administrador
+        </span>
+        <ng-template #doc_est>
+            NextClassTo: Salon
+        </ng-template>
+    </div>
+    <div><!-- user/log out -->
+        <div>
+            <span style="color: white; margin-right: 15px;">
+                <i class="fa-solid fa-user"></i>
+                {{name}}
+                <a style="cursor: pointer; color: brown; margin-left: 5px;" (click)="logout()">Log-out</a>
+            </span>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-2">
     <div class="caja">
         <p class="text-poli">Politectnico Colombiano</p>
         <div class="justify-content-center container">
             <!-- <div class="row"> 
                 <div class="col-8"> -->
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Bloque</th>
-                                <th>Aula</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <div>
-                                <tr *ngFor="let bloque of bloque" >
-                                    <td>
-                                        <button class="btn btn-secondary" disabled><i class="fa-solid fa-block"></i>{{bloque}}</button>
-                                    </td>
-                                    <ng-container *ngFor="let aula of aulas">
-                                        <td *ngIf="aula.square===bloque">
-                                            <button [class]="'btn btn-success '+aula.state" (click)="toViewAula(aula.id)">{{aula.number}}</button>
-                                            <!-- <button class="btn btn-outline-danger" (click)="deleteAula(aula.id)"><i class="fa-solid fa-trash"></i></button> -->
-                                            <div class="separator line"></div>
-                                        </td>
-                                    </ng-container>
-                                </tr>
-                            </div>
-                        </tbody>
-                    </table>
-                <!-- </div> -->
-                <!-- <div class="col-4"> -->
-                    <div>
-                        <span>
-                            <i class="fa-solid fa-user"></i>
-                            {{name}}
-                            <a style="cursor: pointer; color: brown;" (click)="logout()" >Logout</a>
-                        </span>
-                    </div>
-                <!-- </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bloque</th>
+                        <th>Aulas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <div> -->
+                    <tr *ngFor="let bloque of bloque">
+                        <td>
+                            <button class="btn btn-secondary" disabled><i
+                                    class="fa-solid fa-block"></i>{{bloque}}</button>
+                        </td>
+                        <ng-container *ngFor="let aula of aulas">
+                            <td *ngIf="aula.square===bloque">
+                                <button [class]="'btn btn-success '+aula.state"
+                                    (click)="toViewAula(aula.id)">{{aula.number}}</button>
+                                <!-- <button class="btn btn-outline-danger" (click)="deleteAula(aula.id)"><i class="fa-solid fa-trash"></i></button> -->
+                                <div class="separator line"></div>
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <!-- </div> -->
+                </tbody>
+            </table>
+            <!-- </div> -->
+            <!-- <div class="col-4"> -->
+
+            <!-- </div>
             </div> -->
         </div>
     </div>
