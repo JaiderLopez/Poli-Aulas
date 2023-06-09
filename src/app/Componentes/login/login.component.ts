@@ -38,7 +38,7 @@ export class LoginComponent {
     if (dataPersona.length == 0) {
       alert('El usuario no existe');
     } else if (dataPersona[0].email == this.formulario.get('email').value && dataPersona[0].password == this.formulario.get('password').value) {
-      this.authService.login(dataPersona[0].email, dataPersona[0].password, dataPersona[0].name);
+      this.authService.login(dataPersona[0]);
       this.home();
       // alert('Bienvenido ' + dataPersona[0].name);
     } else {

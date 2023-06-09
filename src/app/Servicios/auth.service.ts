@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
-import * as CryptoJS from 'crypto-js';  
+import * as CryptoJS from 'crypto-js';
+import { Persona } from '../Modelos/persona.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,10 +39,15 @@ export class AuthService {
   public getName(): string {
     return this.session.get(this.name);
   }
+  
+  public getType(): string {
+    return this.session.get('type');
+  }
 
-  public login(user: string, pass: string, name: string): void {
-    this.session.set(this.user, user, 1800, 's');
-    this.session.set(this.pass, pass, 1800, 's');
-    this.session.set(this.name, name, 1800, 's');
+  public login(user:Persona): void {
+    this.session.set(this.user, user.email, 1800, 's');
+    this.session.set(this.pass, user.password, 1800, 's');
+    this.session.set(this.name, user.name, 1800, 's');
+    this.session.set('type', user.type, 1800, 's');
   }
 }

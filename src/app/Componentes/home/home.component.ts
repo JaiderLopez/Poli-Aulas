@@ -29,14 +29,14 @@ export class HomeComponent {
   aulas: Aulas[];
   bloque: string[];
   name: string;
-  type: string= 'administrador';
+  type: string;
 
   ngOnInit(): void {
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login']);
     } else {
       this.name = this.authService.getName();
-      // this.type = this.authService.getType();
+      this.type = this.authService.getType();
     }
     this.aulaService.getAulas().subscribe((res) => {
       this.aulas = res.map((e) => {
