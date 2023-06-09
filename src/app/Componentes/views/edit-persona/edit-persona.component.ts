@@ -27,6 +27,8 @@ export class EditPersonaComponent {
     password: [''],
     type: [''],
     state: [''],
+    subject: [''],
+    group: [''],
   })
   }
 
@@ -48,8 +50,8 @@ export class EditPersonaComponent {
 
   onSubmit(){
     const id = this.activedRoute.snapshot.paramMap.get('id')
-    this.personaService.updatePersona(this.editPerForm.value, id)
-    this.router.navigate(['viewper'])
+    this.personaService.updatePersona(this.editPerForm.value, id);
+    this.router.navigate(['viewper']);
   }
   
   atHome(){

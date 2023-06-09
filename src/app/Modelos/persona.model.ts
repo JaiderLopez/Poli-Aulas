@@ -5,4 +5,6 @@ export class Persona {
     password: string;
     type: string;
     state: string;
+    subject: string[];
+    group: string[];
 }
