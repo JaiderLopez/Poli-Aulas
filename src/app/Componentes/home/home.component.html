@@ -29,22 +29,27 @@
 <!-- nav -->
 <nav class="navbar navbar-dark bg-dark">
     <div> <!-- logo -->
-        <p class="text-poli">Politectnico Colombiano - J I C</p>
+        <p class="text-poli"><i class="fa-solid fa-building" style="color: #0fae47;"></i> Politectnico Colombiano - J I C</p>
     </div>
     <div><!-- opciones para administrador -->
         <span *ngIf="getType(); else doc_est">
             Menu para Administrador
         </span>
         <ng-template #doc_est>
-            NextClassTo: Salon
+            <span>
+                Menu para Docente
+                NextClassTo: Salon
+            </span>
         </ng-template>
     </div>
     <div><!-- user/log out -->
         <div>
             <span style="color: white; margin-right: 15px;">
-                <i class="fa-solid fa-user"></i>
-                {{name}}
-                <a style="cursor: pointer; color: brown; margin-left: 5px;" (click)="logout()">Log-out</a>
+                <p class="cube name">
+                    <i class="fa-solid fa-user"></i>
+                    {{name}}
+                </p>
+                <a class="cube logout" (click)="logout()">Log-out</a>
             </span>
         </div>
     </div>
@@ -68,7 +73,7 @@
                     <tr *ngFor="let bloque of bloque">
                         <td>
                             <button class="btn btn-secondary" disabled><i
-                                    class="fa-solid fa-block"></i>{{bloque}}</button>
+                                    class="fa-solid fa-cube" style="color: #000;"></i> {{bloque}}</button>
                         </td>
                         <ng-container *ngFor="let aula of aulas">
                             <td *ngIf="aula.square===bloque">

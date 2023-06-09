@@ -66,3 +66,34 @@ hr{
 .ocupado{
     background-color: rgb(178, 20, 20) !important;
 }
+
+.cube {
+    cursor: pointer;
+    background-color: #f1e9e9;
+    color: #212121;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px 0;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+}
+
+.name {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.logout {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #f44336;
+}
+
+.logout:hover {
+    background-color: #da190b;
+}

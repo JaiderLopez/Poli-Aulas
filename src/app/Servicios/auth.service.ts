@@ -14,6 +14,7 @@ export class AuthService {
   user = 'cyrPXjQmiRqg/r+SQuGupQ==';
   pass = 'eHFbmumwF/F3vcF+oCNdCA==';
   name = 'E9XNbHMsSy6gmieYW0CLlA==';
+  rol = 'lozAeGbtHgV9eo0IxCdlAw==';
 
   public isAuthenticated(): boolean {
     const user = this.session.get(this.user);
@@ -25,29 +26,50 @@ export class AuthService {
   }
 
   public logout(): void {
+    this.session.remove(this.user);
+    this.session.remove(this.pass);
+    this.session.remove(this.name);
+    this.session.remove(this.rol);
     this.session.clear();
   }
 
   public getUser(): string {
-    return this.session.get(this.user);
+    return this.decrypt(this.session.get(this.user), this.user)
   }
 
   public getPass(): string {
-    return this.session.get(this.pass);
+    return this.decrypt(this.session.get(this.pass), this.pass)
   }
 
   public getName(): string {
-    return this.session.get(this.name);
-  }
-  
-  public getType(): string {
-    return this.session.get('type');
+    return this.decrypt(this.session.get(this.name), this.name)
   }
 
-  public login(user:Persona): void {
-    this.session.set(this.user, user.email, 1800, 's');
-    this.session.set(this.pass, user.password, 1800, 's');
-    this.session.set(this.name, user.name, 1800, 's');
-    this.session.set('type', user.type, 1800, 's');
+  public getRol(): number {
+    switch (this.session.get(this.rol)) {
+      case 'administrador':
+        return 0;
+      case 'docente':
+        return 1;
+      case 'estudiante':
+        return 2;
+      default:
+        return 3;
+    }
+  }
+
+  public login(user: Persona): void {
+    this.session.set(this.user, this.encrypt(user.email, this.user), 1800, 's');
+    this.session.set(this.pass, this.encrypt(user.password, this.pass), 1800, 's');
+    this.session.set(this.name, this.encrypt(user.name, this.name), 1800, 's');
+    this.session.set(this.rol, this.encrypt(user.type, this.rol), 1800, 's');
+  }
+
+  encrypt(data, key) {
+    return CryptoJS.AES.encrypt(data, key).toString();
+  }
+
+  decrypt(data, key) {
+    return CryptoJS.AES.decrypt(data, key).toString(CryptoJS.enc.Utf8);
   }
 }

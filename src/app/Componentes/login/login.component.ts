@@ -30,7 +30,6 @@ export class LoginComponent {
   onSubmit() {
       this.personaService.getLogin(this.formulario.get('email').value).subscribe((data) => {
       this.login(data as Persona[]);
-      
     });
   }
 

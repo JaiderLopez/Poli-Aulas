@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { PersonaService } from 'src/app/Servicios/persona.service'; //servicio
 import { Persona } from 'src/app/Modelos/persona.model'; //modelo
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Servicios/auth.service';
 
 @Component({
   selector: 'app-view-personas',
@@ -11,11 +12,14 @@ import { Router } from '@angular/router';
 })
 export class ViewPersonasComponent {
 
-  constructor (private personaService: PersonaService, private router: Router){ }
+  constructor (private personaService: PersonaService, private router: Router, private authService: AuthService){ }
 
   personas: Persona[];
 
   ngOnInit(): void{
+    if (this.authService.getRol() != 0) {
+      this.router.navigate(['/home']);
+    }
     this.personaService.getPersonas().subscribe( (res)=>{
       this.personas = res.map( (e)=>{
         return {
