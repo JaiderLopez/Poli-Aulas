@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   public getRol(): number {
-    switch (this.session.get(this.rol)) {
+    switch (this.decrypt(this.session.get(this.rol), this.rol)) {
       case 'administrador':
         return 0;
       case 'docente':
