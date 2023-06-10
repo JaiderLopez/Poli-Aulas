@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/Servicios/auth.service'
 
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -97,9 +98,12 @@ export class HomeComponent {
   }
 
   getAula(id: string) {
-    this.aulaService.getAula(id).subscribe((data) => {
-      this.viewMoreInfo(data as Aulas);
-    });
+    // this.aulaService.getAula(id).subscribe((data) => {
+    //   this.viewMoreInfo(data as Aulas);
+    // });
+    let aula: Aulas;
+    aula = this.aulas.find(aula => aula.id === id);
+    this.viewMoreInfo(aula);
   }
 
   viewMoreInfo(aula: Aulas) {
@@ -111,34 +115,65 @@ export class HomeComponent {
       buttonsStyling: false
     })
 
-    swalWithBootstrapButtons.fire({
-      title: 'AULA',
+    Swal.fire({
+      title: 'Información del aula',
       html: `
-      <div class="row">
-        <div class="col-md-12">
-          <p><strong>Bloque:</strong> ${aula.square}</p>
-          <p><strong>Numero Aula:</strong> ${aula.number}</p>
-          <p><strong>Tipo Aula:</strong> ${aula.type}</p>
-          <p><strong>Fecha:</strong> ${aula.date}</p>
-          <p><strong>Estado:</strong> ${aula.state}</p>
-          <p><strong>Hora Inicio:</strong> ${aula.hInicio}</p>
-          <p><strong>Hora Fin:</strong> ${aula.hFin}</p>
-        </div>
-      </div>
+        <p><strong>Bloque:</strong> ${aula.square}</p>
+        <p><strong>Número de aula:</strong> ${aula.number}</p>
+        <p><strong>Tipo de aula:</strong> ${aula.type}</p>
+        <p><strong>Fecha:</strong> ${aula.date}</p>
+        <p><strong>Estado:</strong> ${aula.state}</p>
+        <p><strong>Hora de inicio:</strong> ${aula.hInicio}</p>
+        <p><strong>Hora fin:</strong> ${aula.hFin}</p>
       `,
-      width: 400,
-      heightAuto: false,
-      color: '#328e6f',
-      backdrop: `rgba(0,0,0,0.4)`,
       confirmButtonText: 'Solicitar',
-      reverseButtons: true
+      confirmButtonColor: '#328e6f',
     }).then((result) => {
-      if (result.isConfirmed) {
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
+      if (aula.state == 'libre') {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Solicitud enviada',
+            'La solicitud ha sido enviada correctamente',
+            'success'
+          )
+          // this.aulaService.updateAula(aula);
+        }
+      } else {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Aula no disponible',
+            'El aula no está disponible',
+            'error'
+          )
+        }
       }
     })
   }
 
+  mostrarAlertaDatosAula() {
+    const datosAula = {
+      bloque: 'Bloque A',
+      numero: '101',
+      tipo: 'Aula teórica',
+      fecha: '2023-06-09',
+      estado: 'Disponible',
+      horaInicio: '09:00',
+      horaFin: '11:00'
+    };
+
+    Swal.fire({
+      title: 'Información del aula',
+      html: `
+        <p><strong>Bloque:</strong> ${datosAula.bloque}</p>
+        <p><strong>Número de aula:</strong> ${datosAula.numero}</p>
+        <p><strong>Tipo de aula:</strong> ${datosAula.tipo}</p>
+        <p><strong>Fecha:</strong> ${datosAula.fecha}</p>
+        <p><strong>Estado:</strong> ${datosAula.estado}</p>
+        <p><strong>Hora de inicio:</strong> ${datosAula.horaInicio}</p>
+        <p><strong>Hora fin:</strong> ${datosAula.horaFin}</p>
+      `,
+      icon: 'info',
+      confirmButtonText: 'Aceptar'
+    });
+  }
 }
