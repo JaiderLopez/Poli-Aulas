@@ -33,12 +33,19 @@
     </div>
     <div><!-- opciones para administrador -->
         <span *ngIf="getType(); else doc_est">
-            Menu para Administrador
+            <div>
+                <span style="color: rgb(16, 178, 70); margin-right: 15px;">
+                    <p class="cube register" (click)="toRegister()">
+                        Registrar Persona
+                    </p>
+                    <a class="cube list" (click)="toViewPer()">Listar Persona</a>
+                </span>
+            </div>
         </span>
         <ng-template #doc_est>
-            <span>
-                Menu para Docente
-                NextClassTo: Salon
+            <span style="color: white;">
+                <!-- Menu para Docente -->
+                NextClassTo: Bloque#: ; Aula#: ;
             </span>
         </ng-template>
     </div>

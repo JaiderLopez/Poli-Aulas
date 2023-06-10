@@ -32,8 +32,6 @@ export class EditPersonaComponent {
   })
   }
 
-  //metodos
-
   ngOnInit(): void{
     const id = this.activedRoute.snapshot.paramMap.get('id');
     this.personaService.getPersona(id).subscribe( res=> {
@@ -44,6 +42,8 @@ export class EditPersonaComponent {
         password: [this.personaRef.password],
         type: [this.personaRef.type],
         state: [this.personaRef.state],
+        subject: [this.personaRef.subject],
+        group: [this.personaRef.group],
       })
     })
   }

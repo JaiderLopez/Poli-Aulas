@@ -63,6 +63,13 @@ export class HomeComponent {
     this.router.navigate(['/login']);
   }
 
+  toViewPer(){
+    this.router.navigate(['viewper']);
+  }
+
+  toRegister(){
+    this.router.navigate(['register']);
+  }
   // onSubmit(){
   //   this.aulaService.addAulas(this.postForm.value);
   //   alert("aggre");

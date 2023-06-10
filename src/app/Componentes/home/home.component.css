@@ -97,3 +97,21 @@ hr{
 .logout:hover {
     background-color: #da190b;
 }
+
+.register {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* background-color: #31d531; */
+}
+
+.list {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #118733;
+}
+.list:hover {
+    background-color: #22bf4f;
+}
+.register:hover {
+    background-color: #1cae56;
+}

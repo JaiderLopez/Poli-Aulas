@@ -45,4 +45,9 @@ export class ViewPersonasComponent {
   atRegister(){
     this.router.navigate(['register']);
   }
+
+  atHome(){
+    this.router.navigate(['home']);
+  }
+
 }
