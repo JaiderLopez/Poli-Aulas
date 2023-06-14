@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="caja">
+    <div class="caja mt-2">
         <p class="text-poli">Registro de Personas</p>
         <button class="button-x" (click)="atHome()"> <strong>X</strong> </button>
         <img src="../../../assets/img/people.avif" alt="logo" class="center" id="logo">
@@ -7,29 +7,35 @@
         <div class="justify-content-center" >
             <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="mb-4">
-                    <input type="text" class="form-control" id="name" name="password" formControlName="name" placeholder="name_user" required>
+                    <input type="text" class="form-control" id="name" name="password" formControlName="name" placeholder="user name" required>
                     <!-- <p [hidden]="gName.valid || gName.untouched">Debe ingresar un nombre</p> -->
                     
-                    <input type="email" class="form-control" id="user" name="usuario" formControlName="email" placeholder="email_user" required>
+                    <input type="email" class="form-control" id="user" name="usuario" formControlName="email" placeholder="user email" required>
                     <!-- <p [hidden]="gEmail?.untouched || !gEmail?.errors?.['required']">Debe ingresar un email</p> -->
                     <!-- <p *ngIf="gEmail?.errors?.['email']">El email no es valido</p> -->
 
-                    <input type="text" class="form-control" id="password" name="password" formControlName="password" placeholder="password" required>
+                    <input type="text" class="form-control" id="password" name="password" formControlName="password" placeholder="user password" required>
                     <!-- <p [hidden]="statusForm.get('password')?.valid || gPassword?.untouched">Debe ingresar una Contraseña</p> -->
 
-                    <select name="type_user" id="type_user" formControlName="type" class="form-control" required>
+                    <div style="display: flex; margin-top: 15px;">
+                    <label class="text-poli">User Type</label>
+                    <select name="type_user" id="type_user" formControlName="type" class="form-control-seccion" required>
                         <option value="estudiante">Estudiante</option>
                         <option value="docente">Docente</option>
                         <option value="administrador">Administrador</option>
                       </select>
+                    </div>
 
-                      <select name="state_user" id="state_user" formControlName="state" class="form-control" required>
+                    <div style="display: flex; margin-top: 15px;">
+                        <label class="text-poli">User State</label>
+                      <select name="state_user" id="state_user" formControlName="state" class="form-control-seccion" required>
                         <option value="actived">Activo</option>
                         <option value="disabled">No-Activo</option>
                       </select>
+                    </div>
                 </div>
                 <!-- <button class="button" routerLink="register"> <strong>Cancel</strong> </button> -->
-                <button class="button" [disabled]="!registerForm.valid" type="submit"><strong>Registre</strong> </button>
+                <button class="button mb-3" [disabled]="!registerForm.valid" type="submit"><strong>Registrar</strong> </button>
             </form>
         </div>
     </div>

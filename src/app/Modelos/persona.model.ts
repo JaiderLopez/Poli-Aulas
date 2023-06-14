@@ -5,6 +5,6 @@ export class Persona {
     password: string;
     type: string;
     state: string;
-    subject: string[];
-    group: string[];
+    subject: string[]; //docentes
+    group: string[]; //docentes y estudiantes
 }

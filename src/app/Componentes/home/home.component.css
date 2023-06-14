@@ -73,7 +73,7 @@ hr{
     color: #212121;
     padding: 5px 10px;
     border-radius: 5px;
-    border: none;
+    border-left: 1px solid rgb(13, 98, 13);
     margin: 10px 0;
     font-size: 15px;
     font-weight: bold;
@@ -107,11 +107,35 @@ hr{
 .list {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    background-color: #118733;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* background-color: #118733; */
 }
+
+.register2 {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* background-color: #31d531; */
+}
+
+.list2 {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    /* background-color: #118733; */
+}
+
 .list:hover {
-    background-color: #22bf4f;
+    background-color: #1cae56;
 }
 .register:hover {
+    background-color: #1cae56;
+}
+
+.list2:hover {
+    background-color: #1cae56;
+}
+.register2:hover {
     background-color: #1cae56;
 }

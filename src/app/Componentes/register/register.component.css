@@ -1,21 +1,15 @@
 .container {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     justify-content: center;
     padding: 0 2rem;
 }
 
-.login-container {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
 .caja{
     background-color: white;
     width: 60%;
-    height: 600px;
+    /* height: 600px; */
     border-radius: 5px;
     -webkit-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
     -moz-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
@@ -33,7 +27,7 @@
 }
 #logo{
     width: 150px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .form {
@@ -58,8 +52,14 @@
     box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
     width: 300px;
     margin: 15px 0px;
-}
-
+  }
+  .form-control-seccion{
+    -webkit-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+    -moz-box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+    box-shadow: 9px 11px 15px 0px rgba(0,0,0,0.54);
+    width: 210px;
+    margin: 0px 15px;
+  }
 
 
 .button {

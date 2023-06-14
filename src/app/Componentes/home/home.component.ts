@@ -70,6 +70,15 @@ export class HomeComponent {
   toRegister(){
     this.router.navigate(['register']);
   }
+
+  toSubjects(){
+    this.router.navigate(['subjects']);
+  }
+
+  toGroups(){
+    this.router.navigate(['groups']);
+  }
+
   // onSubmit(){
   //   this.aulaService.addAulas(this.postForm.value);
   //   alert("aggre");

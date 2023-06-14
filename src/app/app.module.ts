@@ -19,6 +19,8 @@ import { RegisterComponent } from './Componentes/register/register.component';
 import { ViewPersonasComponent } from './Componentes/views/view-personas/view-personas.component';
 import { EditPersonaComponent } from './Componentes/views/edit-persona/edit-persona.component';
 import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.component';
+import { AsignaturasComponent } from './Componentes/asignaturas/asignaturas.component';
+import { GruposComponent } from './Componentes/grupos/grupos.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ViewAulaComponent } from './Componentes/views/view-aula/view-aula.compo
     ViewPersonasComponent,
     EditPersonaComponent,
     ViewAulaComponent,
+    AsignaturasComponent,
+    GruposComponent,
   ],
   imports: [
     BrowserModule,
