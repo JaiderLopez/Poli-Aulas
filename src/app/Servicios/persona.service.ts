@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-//servicio de angular
+//servicio de firebase
 import { AngularFirestore } from '@angular/fire/compat/firestore'
 //modelo [persona]={name, gmail, password, type, state}
 import { Persona } from '../Modelos/persona.model';

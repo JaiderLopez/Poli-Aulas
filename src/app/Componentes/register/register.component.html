@@ -1,7 +1,27 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div> <!-- logo -->
+      <p class="text-poli"><i class="fa-solid fa-building" style="color: #0fae47;"></i> Politectnico Colombiano - J I C</p>
+  </div>
+  <div style="margin-right: 300px;"><!-- opciones para administrador -->
+          <div>
+              <span style="color: rgb(16, 178, 70); ">
+                  <p class="cube register" (click)="toViewPer()">
+                      Listar Personas
+                  </p>
+                  <a class="cube list" (click)="atHome()">Home</a>
+              </span>
+          </div>
+  </div>
+  <div><!-- extra -->
+      <div>
+          
+      </div>
+  </div>
+</nav>
+
 <div class="container">
-    <div class="caja mt-2">
-        <p class="text-poli">Registro de Personas</p>
-        <button class="button-x" (click)="atHome()"> <strong>X</strong> </button>
+    <div class="caja mt-2 mb-3">
+        <p class="text-poli2">Registro de Personas</p>
         <img src="../../../assets/img/people.avif" alt="logo" class="center" id="logo">
 
         <div class="justify-content-center" >
@@ -18,7 +38,7 @@
                     <!-- <p [hidden]="statusForm.get('password')?.valid || gPassword?.untouched">Debe ingresar una Contraseña</p> -->
 
                     <div style="display: flex; margin-top: 15px;">
-                    <label class="text-poli">User Type</label>
+                    <label class="text-poli2">User Type</label>
                     <select name="type_user" id="type_user" formControlName="type" class="form-control-seccion" required>
                         <option value="estudiante">Estudiante</option>
                         <option value="docente">Docente</option>
@@ -27,7 +47,7 @@
                     </div>
 
                     <div style="display: flex; margin-top: 15px;">
-                        <label class="text-poli">User State</label>
+                        <label class="text-poli2">User State</label>
                       <select name="state_user" id="state_user" formControlName="state" class="form-control-seccion" required>
                         <option value="actived">Activo</option>
                         <option value="disabled">No-Activo</option>

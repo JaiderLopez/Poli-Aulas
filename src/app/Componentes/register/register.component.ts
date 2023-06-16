@@ -39,5 +39,8 @@ atHome(){
   this.router.navigate(['home']);
 }
 
+toViewPer(){
+  this.router.navigate(['viewper']);
+}
 
 }

@@ -1,1 +1,65 @@
-<h1>Asignaturas</h1>
+<nav class="navbar navbar-dark bg-dark">
+    <div> <!-- logo -->
+        <p class="text-poli"><i class="fa-solid fa-building" style="color: #0fae47;"></i> Politectnico Colombiano - J I C</p>
+    </div>
+    <div style="margin-right: 300px;"><!-- opciones para administrador -->
+            <div>
+                <span style="color: rgb(16, 178, 70); ">
+                    <p class="cube register" >
+                        ?
+                    </p>
+                    <a class="cube list" (click)="atHome()">Home</a>
+                </span>
+            </div>
+    </div>
+    <div><!-- extra -->
+        <div>
+            
+        </div>
+    </div>
+  </nav>
+  <!-- ---------------------------------------------------------------------------------- -->
+  <div class="container">
+    <div class="caja mt-2 mb-3">
+        <h1 style="text-align: center;">Asignaturas</h1>
+        <form [formGroup]="asigturaForm" (ngSubmit)="onSubmit()">
+            <div style="display: flex;" class="mb-3">
+                <!-- name asignatura -->
+                <input type="text" name="name" formControlName="name"  placeholder="Nombre de Asignatura" required class="form-control" style="width: 300px; margin: 0px 15px;">
+                
+                <!-- name docente -->
+                <select name="id_docentes" formControlName="id_docente" required style="width: 300px; margin-right: 10px;">
+                    <option disabled selected>Selecciona una opción</option>
+                    <div class="p" *ngFor="let persona of personas">
+                        <option value="persona.id">{{persona.name}}</option>
+                    </div>
+                </select>
+                
+                <!-- button send -->
+                <button class="btn btn-success" type="submit" [disabled]="asigturaForm.invalid">Añadir Asignatura</button>
+
+            </div>
+        </form>
+        <hr>
+    <!-- ---------------------------------------------------------------------------------- -->
+        <div style="margin: 5px 15px;">
+            <table class="table table-hover table-striped">
+                <thead class="bg-dark text-white">
+                <tr>
+                    <th>Nombre Asignatura</th>
+                    <th>Docente a Cargo</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let asignatura of asignaturas">
+                    <td>{{asignatura.name}}</td>
+                    <!-- <td>{{docenteId(asignatura.id_docente)}}</td> -->
+                    <td>{{asignatura.id_docente}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteAsignatura(asignatura.id)" style="margin: 0px 12px;"><i class="fas fa-trash" ></i></button></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+  </div>

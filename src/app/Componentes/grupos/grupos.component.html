@@ -1,1 +1,73 @@
-<h1>Grupos</h1>
+<nav class="navbar navbar-dark bg-dark">
+    <div> <!-- logo -->
+        <p class="text-poli"><i class="fa-solid fa-building" style="color: #0fae47;"></i> Politectnico Colombiano - J I C</p>
+    </div>
+    <div style="margin-right: 300px;"><!-- opciones para administrador -->
+            <div>
+                <span style="color: rgb(16, 178, 70); ">
+                    <p class="cube register" >
+                        ?
+                    </p>
+                    <a class="cube list" (click)="atHome()">Home</a>
+                </span>
+            </div>
+    </div>
+    <div><!-- extra -->
+        <div>
+            
+        </div>
+    </div>
+  </nav>
+  <!-- ---------------------------------------------------------------------------------- -->
+  <div class="container">
+    <div class="caja mt-2 mb-3">
+        <h1 style="text-align: center;">Grupos</h1>
+        <form [formGroup]="grupoForm" (ngSubmit)="onSubmit()">
+            <div style="display: flex;" class="mb-3">
+                <!-- name asignatura -->
+                <input type="text" name="name" formControlName="code"  placeholder="Codigo de Grupo" required class="form-control" style="width: 200px; margin: 0px 15px;">
+                
+                <!-- name docente -->
+                <select name="id_asignatura" formControlName="id_asignatura" required style="width: 200px; margin-right: 10px;">
+                    <option disabled selected>Selecciona una Asignatura</option>
+                    <div class="p" *ngFor="let asignatura of asignaturas">
+                        <option value="asignatura.id">{{asignatura.name}}</option>
+                    </div>
+                </select>
+
+                <!-- name estudiante -->
+                <select name="id_estudiante" formControlName="id_estudiante" required style="width: 200px; margin-right: 10px;">
+                    <option disabled selected>Selecciona un estudiante</option>
+                    <div class="p" *ngFor="let persona of personas">
+                        <option value="persona.id">{{persona.name}}</option>
+                    </div>
+                </select>
+                
+                <!-- button send -->
+                <button class="btn btn-success" type="submit" [disabled]="grupoForm.invalid">Añadir Grupo</button>
+
+            </div>
+        </form>
+        <hr>
+    <!-- ---------------------------------------------------------------------------------- -->
+        <div style="margin: 5px 15px;">
+            <table class="table table-hover table-striped">
+                <thead class="bg-dark text-white">
+                <tr>
+                    <th>Codigo</th>
+                    <th>Asignatura Asignada</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let grupo of grupos">
+                    <td>{{grupo.code}}</td>
+                    <!-- <td>{{asignaturaId(grupo.id_asignatura)}}</td> -->
+                    <td>{{grupo.id_asignatura}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteGrupo(grupo.id)" style="margin: 0px 12px;"><i class="fas fa-trash" ></i></button></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
