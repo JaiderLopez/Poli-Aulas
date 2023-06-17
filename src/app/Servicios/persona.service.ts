@@ -14,46 +14,58 @@ export class PersonaService {
 
   //           FUNCIONES PARA PERSONA
   //optener todos
-  getPersonas(){
+  getPersonas() {
     return this.angularFireStore.collection("persona").snapshotChanges();
   }
   //optener una persona
-  getPersona(id){
+  getPersona(id) {
     return this.angularFireStore.collection("persona").doc(id).valueChanges();
   }
   //agregar una persona
-  addPersona(persona: Persona){
-    return new Promise<any>((resolve, reject)=>{
+  addPersona(persona: Persona) {
+    return new Promise<any>((resolve, reject) => {
       this.angularFireStore
-      .collection("persona")
-      .add(persona)
-      .then((res)=>{
-        console.log(res)
-      },
-      (error)=>{
-        reject(error)
-      })
+        .collection("persona")
+        .add(persona)
+        .then((res) => {
+          console.log(res)
+        },
+          (error) => {
+            reject(error)
+          })
     })
   }
   //actualizar una persona
-  updatePersona(persona: Persona, id){
+  updatePersona(persona: Persona, id) {
     return this.angularFireStore.collection("persona").doc(id).update({
-           name: persona.name,
-           gmail: persona.email,
-           password: persona.password,
-           type: persona.type,
-           state: persona.state,
-           subject: persona.subject,
-           group: persona.group,
+      name: persona.name,
+      gmail: persona.email,
+      password: persona.password,
+      type: persona.type,
+      state: persona.state,
+      subject: persona.subject,
+      group: persona.group,
+    })
+  }
+
+  addAsig(asig, id) {
+    return this.angularFireStore.collection("persona").doc(id).update({
+
+    })
+  }
+
+  addGroup(group, id) {
+    return this.angularFireStore.collection("persona").doc(id).update({
+
     })
   }
   //eliminar persona
-  deletePersona(id){
+  deletePersona(id) {
     return this.angularFireStore.collection("persona").doc(id).delete();
   }
 
-  getLogin(email){
-    return this.angularFireStore.collection("persona", ref=>ref.where('email', '==', email)).valueChanges();
+  getLogin(email) {
+    return this.angularFireStore.collection("persona", ref => ref.where('email', '==', email)).valueChanges();
   }
 
 }

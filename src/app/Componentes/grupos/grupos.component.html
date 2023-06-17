@@ -30,20 +30,21 @@
                 <!-- name docente -->
                 <select name="id_asignatura" formControlName="id_asignatura" required style="width: 200px; margin-right: 10px;">
                     <option disabled selected>Selecciona una Asignatura</option>
-                    <div class="p" *ngFor="let asignatura of asignaturas">
-                        <option value="asignatura.id">{{asignatura.name}}</option>
-                    </div>
+                    <ng-container class="p" *ngFor="let asignatura of asignaturas">
+                        <option [value]="asignatura.id">{{asignatura.name}}</option>
+                    </ng-container>
                 </select>
 
                 <!-- name estudiante -->
                 <select name="id_estudiante" formControlName="id_estudiante" required style="width: 200px; margin-right: 10px;">
                     <option disabled selected>Selecciona un estudiante</option>
-                    <div class="p" *ngFor="let persona of personas">
-                        <option value="persona.id">{{persona.name}}</option>
-                    </div>
+                    <ng-container class="p" *ngFor="let persona of personas">
+                        <option [value]="persona.id">{{persona.name}}</option>
+                    </ng-container>
                 </select>
                 
                 <!-- button send -->
+                <!-- <a class="btn btn-primary" (click)="addEstudiantes()" style="margin-right: 5px;">Add</a> -->
                 <button class="btn btn-success" type="submit" [disabled]="grupoForm.invalid">Añadir Grupo</button>
 
             </div>
@@ -62,8 +63,8 @@
             <tbody>
                 <tr *ngFor="let grupo of grupos">
                     <td>{{grupo.code}}</td>
-                    <!-- <td>{{asignaturaId(grupo.id_asignatura)}}</td> -->
-                    <td>{{grupo.id_asignatura}}</td>
+                    <td>{{asignaturaId(grupo.id_asignatura)}}</td>
+                    <!-- <td>{{grupo.id_asignatura}}</td> -->
                     <td><button class="btn btn-danger" (click)="deleteGrupo(grupo.id)" style="margin: 0px 12px;"><i class="fas fa-trash" ></i></button></td>
                 </tr>
             </tbody>

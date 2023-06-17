@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/Servicios/auth.service'
 // import { FormBuilder, FormGroup } from '@angular/forms';
 
 import Swal from 'sweetalert2';
+import { Persona } from 'src/app/Modelos/persona.model';
+import { PersonaService } from 'src/app/Servicios/persona.service';
 
 
 @Component({
@@ -17,7 +19,10 @@ import Swal from 'sweetalert2';
 export class HomeComponent {
   // public postForm: FormGroup;
   // private formBuilder: FormBuilder
-  constructor(private aulaService: AulasService, private router: Router, private authService: AuthService) {
+  constructor(private aulaService: AulasService, 
+    private router: Router, 
+    private authService: AuthService,
+    private personaService: PersonaService) {
     //   this.postForm = this.formBuilder.group({
     //     type: [''],
     //     square: [''],
@@ -33,6 +38,7 @@ export class HomeComponent {
   bloque: string[];
   name: string;
   type: number;
+  id: string;
 
   ngOnInit(): void {
     if (!this.authService.isAuthenticated()) {
@@ -40,6 +46,8 @@ export class HomeComponent {
     } else {
       this.name = this.authService.getName();
       this.type = this.authService.getRol();
+      // this.id = this.authService.getId();
+
     }
     this.aulaService.getAulas().subscribe((res) => {
       this.aulas = res.map((e) => {

@@ -42,6 +42,10 @@ export class AsignaturasService {
     })
   }
 
+  async add(asig: Asignaturas){
+    return await this.angularFireStore.collection("asignaturas").add(asig);
+  }
+
   //eliminar asignatura
   deleteAsignatura(id) {
     return this.angularFireStore.collection("asignaturas").doc(id).delete();

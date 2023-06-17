@@ -85,7 +85,12 @@
 
 <div class="container mt-2">
     <div class="caja">
-        <p class="text-poli">Politectnico Colombiano</p>
+        <!-- <p class="text-poli">Politectnico Colombiano</p> -->
+        <div [ngSwitch]="type">
+            <p *ngSwitchCase=0>Administrador</p>
+            <p *ngSwitchCase=1>Docente</p>
+            <p *ngSwitchCase=2>Estudiante </p>
+        </div>
         <div class="justify-content-center container">
             <!-- <div class="row"> 
                 <div class="col-8"> -->

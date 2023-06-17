@@ -30,9 +30,9 @@
                 <!-- name docente -->
                 <select name="id_docentes" formControlName="id_docente" required style="width: 300px; margin-right: 10px;">
                     <option disabled selected>Selecciona una opción</option>
-                    <div class="p" *ngFor="let persona of personas">
-                        <option value="persona.id">{{persona.name}}</option>
-                    </div>
+                    <ng-container class="p" *ngFor="let persona of personas">
+                        <option [value]="persona.id">{{persona.name}}</option>
+                    </ng-container>
                 </select>
                 
                 <!-- button send -->
@@ -54,12 +54,12 @@
             <tbody>
                 <tr *ngFor="let asignatura of asignaturas">
                     <td>{{asignatura.name}}</td>
-                    <!-- <td>{{docenteId(asignatura.id_docente)}}</td> -->
-                    <td>{{asignatura.id_docente}}</td>
+                    <td>{{docenteId(asignatura.id_docente)}}</td>
+                    <!-- <td>{{asignatura.id_docente}}</td> -->
                     <td><button class="btn btn-danger" (click)="deleteAsignatura(asignatura.id)" style="margin: 0px 12px;"><i class="fas fa-trash" ></i></button></td>
                 </tr>
             </tbody>
-            </table>
+            </table> 
         </div>
     </div>
   </div>

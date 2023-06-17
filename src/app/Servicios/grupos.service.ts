@@ -41,10 +41,17 @@ export class GruposService {
     })
   }
 
+  async add(group: Grupos){
+    return await this.angularFireStore.collection("grupos").add(group);
+  }
+
   //eliminar grupo
   deleteGrupo(id) {
     return this.angularFireStore.collection("grupos").doc(id).delete();
   }
-
+  //update grupo
+  updateGrupo(id, grupo: Grupos){
+    return this.angularFireStore.collection("grupos").doc(id).update(grupo);
+  }
 
 }

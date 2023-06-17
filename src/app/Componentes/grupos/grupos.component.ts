@@ -22,7 +22,9 @@ export class GruposComponent {
   asignaturas: Asignaturas[];
   grupos: Grupos[];
   personas: Persona[];
-
+  estudiante: Persona;
+  estudiantes: Grupos;
+  grupo: Grupos;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -37,9 +39,9 @@ export class GruposComponent {
     });
   }
 
-  ngOnInit():void{
-    this.asignaturaService.getAsignaturas().subscribe( (res)=>{
-      this.asignaturas = res.map( (e)=>{
+  ngOnInit(): void {
+    this.asignaturaService.getAsignaturas().subscribe((res) => {
+      this.asignaturas = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Asignaturas)
@@ -47,8 +49,8 @@ export class GruposComponent {
       })
     });
 
-    this.grupoService.getGrupos().subscribe( (res)=>{
-      this.grupos = res.map( (e)=>{
+    this.grupoService.getGrupos().subscribe((res) => {
+      this.grupos = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Grupos)
@@ -56,8 +58,8 @@ export class GruposComponent {
       })
     });
 
-    this.personaService.getPersonas().subscribe( (res)=>{
-      this.personas = res.map( (e)=>{
+    this.personaService.getPersonas().subscribe((res) => {
+      this.personas = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Persona)
@@ -67,17 +69,26 @@ export class GruposComponent {
 
   }
 
-  onSubmit(){
+  onSubmit() {
+    // this.grupoService.addGrupo(this.grupoForm.value);
+    this.setUserData();
+
     this.grupoService.addGrupo(this.grupoForm.value);
+    // if (res) {
+      // console.log(res.id);
+      this.updateEstudiante(this.grupoForm.value.id_estudiante, this.grupoForm.value.id_asignatura);
+      // this.updateGrupo(res.id, this.grupoForm.value.id_estudiantes)
+    // }
+
     this.grupoForm = this.fb.group({
       // id: [''],
-      code: [''],
-      id_asignatura: [''],
+      // code: [''],
+      // id_asignatura: [''],
       id_estudiante: [''],
     });
 
-    this.grupoService.getGrupos().subscribe( (res)=>{
-      this.grupos = res.map( (e)=>{
+    this.grupoService.getGrupos().subscribe((res) => {
+      this.grupos = res.map((e) => {
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Grupos)
@@ -90,22 +101,59 @@ export class GruposComponent {
     this.router.navigate(['home']);
   }
 
-  deleteGrupo(asig){
-    if(confirm("Are you sure to delete")) {
+  deleteGrupo(asig) {
+    if (confirm("Are you sure to delete")) {
       this.grupoService.deleteGrupo(asig);
     }
   }
 
-  asignaturaId(id){
-    let name:any = this.asignaturaService.getAsignatura(id);
-    // console.log(name);
-    return name;
+  asignaturaId(id) {
+    return this.asignaturas.find(asig => asig.id === id).name;
+  }
+  docenteId(id) {
+    return this.personas.find(persona => persona.id === id).name;
   }
 
-  estudianteId(id){
-    let name:any = this.personaService.getPersona(id);
-    // console.log(name);
-    return name;
+  updateEstudiante(id, group) {
+    let index = 0;
+    this.personaService.getPersona(id).subscribe((est: Persona) => {
+      if (index == 0) {
+        this.estudiante = est;
+        this.estudiante.group.push(group);
+        this.personaService.updatePersona(this.estudiante, id);
+        index = 1
+      }
+    });
+    console.log(this.estudiante);
+  }
+
+  updateGrupo(id, group) {
+    let index = 0;
+    this.grupoService.getGrupo(id).subscribe((gru: Grupos) => {
+      if (index == 0) {
+        this.estudiantes = gru;
+        this.estudiantes.id_estudiantes.push(group);
+        this.grupoService.updateGrupo(this.estudiantes, id);
+        index = 1
+      }
+    });
+    console.log(this.estudiante);
+  }
+
+  addEstudiantes() {
+    console.log("hola");
+    this.grupoForm = this.fb.group({
+      // id: [''],
+      // code: [''],
+      // id_asignatura: [''],
+      id_estudiante: [''],
+    });
+    
+  }
+
+  setUserData(){
+    this.grupo= this.grupoForm.value as Grupos;
+    this.grupo.id_estudiantes= [];
   }
 
 }

@@ -15,6 +15,7 @@ export class AuthService {
   pass = 'eHFbmumwF/F3vcF+oCNdCA==';
   name = 'E9XNbHMsSy6gmieYW0CLlA==';
   rol = 'lozAeGbtHgV9eo0IxCdlAw==';
+  id= 'lozAeGbtwOqR9eo0IxCdlAw==';
 
   public isAuthenticated(): boolean {
     const user = this.session.get(this.user);
@@ -30,6 +31,7 @@ export class AuthService {
     this.session.remove(this.pass);
     this.session.remove(this.name);
     this.session.remove(this.rol);
+    this.session.remove(this.id);
     this.session.clear();
   }
 
@@ -44,7 +46,9 @@ export class AuthService {
   public getName(): string {
     return this.decrypt(this.session.get(this.name), this.name)
   }
-
+  public getId(): string {
+    return this.decrypt(this.session.get(this.id), this.id)
+  }
   public getRol(): number {
     switch (this.decrypt(this.session.get(this.rol), this.rol)) {
       case 'administrador':

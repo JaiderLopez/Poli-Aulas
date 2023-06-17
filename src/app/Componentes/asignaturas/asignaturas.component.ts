@@ -17,6 +17,8 @@ export class AsignaturasComponent {
   public asigturaForm: FormGroup;
   personas: Persona[];
   asignaturas: Asignaturas[];
+  
+  docente: Persona;
 
   constructor(
     private router: Router,
@@ -50,8 +52,15 @@ export class AsignaturasComponent {
     });
   }
 
-  onSubmit(){
-    this.asignturaService.addAsignatura(this.asigturaForm.value);
+  async onSubmit(){
+    
+    // const res= await this.asignturaService.addAsignatura(this.asigturaForm.value);
+    const res= await this.asignturaService.add(this.asigturaForm.value);
+    if(res){
+        console.log(res.id);
+        this.updateDocente(this.asigturaForm.value.id_docente, res.id);
+    }
+
     this.asigturaForm = this.fb.group({
       // id: [''],
       name: [''],
@@ -66,6 +75,8 @@ export class AsignaturasComponent {
         }
       })
     });
+
+    
   }
 
   atHome() {
@@ -79,9 +90,23 @@ export class AsignaturasComponent {
   }
 
   docenteId(id){
-    let name:any = this.personaService.getPersona(id);
-    // console.log(name);
-    return name;
+      return this.personas.find(persona => persona.id === id).name;
   }
+  asignaturaId(id){
+    return this.asignaturas.find(asig => asig.id === id).name;
+  }
+
+  updateDocente(id, asig){
+    let index=0;
+    this.personaService.getPersona(id).subscribe( (doc: Persona) => {
+      if(index==0){this.docente = doc; 
+      this.docente.subject.push(asig);
+      this.personaService.updatePersona(this.docente, id);
+      index=1
+      }
+    });
+    console.log(this.docente);
+  }
+
 
 }
