@@ -153,13 +153,16 @@ export class HomeComponent {
       confirmButtonText: 'Solicitar',
       confirmButtonColor: '#328e6f',
     }).then((result) => {
-      if (aula.state == 'libre') {
+      if (aula.state == 'libre' && this.type==1) {
+        aula.state= 'ocupado';
         if (result.isConfirmed) {
           swalWithBootstrapButtons.fire(
             'Solicitud enviada',
             'La solicitud ha sido enviada correctamente',
-            'success'
+            'success',
+            
           )
+          this.aulaService.updateAula(aula, aula.id);
           // this.aulaService.updateAula(aula);
         }
       } else {
